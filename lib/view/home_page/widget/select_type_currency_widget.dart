@@ -16,12 +16,6 @@ class SelectTypeCurrencyWidget extends StatefulWidget {
 class _SelectTypeCurrencyWidgetState extends State<SelectTypeCurrencyWidget> {
 
   @override
-  void initState() {
-    ConvertController.instance.setListCurrencies();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width / 100;
     

@@ -1,22 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:frank_furter/controller/convert_controller/convert_controller.dart';
 import 'package:frank_furter/utils/constants/colors.dart';
 import 'package:frank_furter/view/home_page/widget/display_widget.dart';
 
 import 'widget/build_buttons_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    ConvertController.instance.setListCurrencies();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       backgroundColor: MyColors.backgroundBlackLigth,
-      body: Column(
-        children: const <Widget>[
-          Expanded(child: DisplayWidget()),
-          Expanded(child: BuildButtons()),
-        ],
+      body: AnimatedBuilder(
+        animation: ConvertController.instance,
+        builder: (context, snapshot) {
+          return ConvertController.instance.listCurrencies.isEmpty ?
+            const Center(child: CircularProgressIndicator(
+              color: MyColors.secondTextColor,
+            ))
+          :
+            Column(
+            children: const <Widget>[
+              Expanded(child: DisplayWidget()),
+              Expanded(child: BuildButtons()),
+            ],
+          );
+        }
       ),
     );
   }

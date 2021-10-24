@@ -15,13 +15,23 @@ class ConvertController extends ChangeNotifier {
   List<String> listCurrencies = [];
 
   convertCurrency() async {
-    String currentCurrencyForConverted = currentCurrency.replaceAll(',', '.');
-    if(currentTypeCurrency == convertedTypeCurrency ) {
-      convertedCurrency = currentCurrency;
-    } else {
-      ConvertedCurrencyModel response = await api.convertCurrency(currentCurrencyForConverted, currentTypeCurrency, convertedTypeCurrency);
-      convertedCurrency = response.convertedCurrencyValue.toStringAsFixed(2).replaceAll('.', ',');
-    }   
+    if (currentCurrency != '0' &&
+        currentCurrency != '0,' &&
+        currentCurrency != '0,0' &&
+        currentCurrency != '0,00') {
+      String currentCurrencyForConverted = currentCurrency.replaceAll(',', '.');
+      if (currentTypeCurrency == convertedTypeCurrency) {
+        convertedCurrency = currentCurrency;
+      } else {
+        ConvertedCurrencyModel response = await api.convertCurrency(
+            currentCurrencyForConverted,
+            currentTypeCurrency,
+            convertedTypeCurrency);
+        convertedCurrency = response.convertedCurrencyValue
+            .toStringAsFixed(2)
+            .replaceAll('.', ',');
+      }
+    }
     notifyListeners();
   }
 
@@ -49,39 +59,35 @@ class ConvertController extends ChangeNotifier {
   }
 
   setCurrentCurrencyValue(String value) {
-    if(value.contains('.')) {
-      if(currentCurrency.contains(',')) {
+    if (currentCurrency == '0') {
+      if (value == '0' || value == '00') {
         return;
+      } else if (value == ',') {
+        currentCurrency = currentCurrency + value;
       } else {
-        if(currentCurrency == '') {
-          currentCurrency = currentCurrency + '0,';
-        } else {
-          currentCurrency = currentCurrency + ',';
-        }
+        currentCurrency = value;
       }
+    } else if (currentCurrency.length >= 4 && currentCurrency[currentCurrency.length - 3] == ',') {
+      return;
     } else {
-      if(currentCurrency.length >= 4) {
-        if(currentCurrency[currentCurrency.length - 3] == ',') {
-          return;
-        } else {
-          currentCurrency = currentCurrency + value;
-        }
-      } else {
-        if(currentCurrency == '') {
-          if(value == '00') {
+      switch (value) {
+        case ',':
+          if(currentCurrency.contains(',')) {
             return;
           } else {
             currentCurrency = currentCurrency + value;
           }
-        } else {
-          if(currentCurrency[0] == '0' && value == '.') {
-            currentCurrency = currentCurrency + value;
-          } else if (currentCurrency == '0') {
-            currentCurrency = value;
+          break;
+        default:
+          if (value == '00') {
+            if (currentCurrency.length >= 3 && currentCurrency[currentCurrency.length - 2] == ',') {
+              currentCurrency = currentCurrency + '0';
+            } else {
+              currentCurrency = currentCurrency + value;
+            }
           } else {
             currentCurrency = currentCurrency + value;
           }
-        }
       }
     }
     convertCurrency();
@@ -89,7 +95,7 @@ class ConvertController extends ChangeNotifier {
   }
 
   deleteCurrencyValue() {
-    if(currentCurrency == '') {
+    if (currentCurrency == '') {
       return;
     } else if (currentCurrency.length == 1) {
       currentCurrency = '0';
@@ -102,9 +108,9 @@ class ConvertController extends ChangeNotifier {
   }
 
   cleanCurrencyValue() {
-      currentCurrency = '0';
-      convertedCurrency = '0';
-      notifyListeners();
+    currentCurrency = '0';
+    convertedCurrency = '0';
+    notifyListeners();
   }
 
   setConvertedCurrencyValue(String value) {
