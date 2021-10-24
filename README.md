@@ -36,6 +36,5 @@ fetch(`https://${host}/latest?amount=10&from=GBP&to=USD`)
 - ✨Magic ✨
 
 <img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_page.jpg" alt="drawing" width="200"/>
-![Screenshot](https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_page.jpg)
-![Screenshot](https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_performed.jpg)
-![Screenshot](https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/list_currency.jpg)
+<img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_performed.jpg" alt="drawing" width="200"/>
+<img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/list_currency" alt="drawing" width="200"/>
