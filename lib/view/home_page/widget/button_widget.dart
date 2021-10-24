@@ -9,6 +9,8 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var _controller = ConvertController.instance;
+
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.25,
       height: (MediaQuery.of(context).size.height * 0.5) / 4,
@@ -17,13 +19,13 @@ class ButtonWidget extends StatelessWidget {
           : ElevatedButton(
               onPressed: () {
                 value == 'del' ?
-                  ConvertController.instance.deleteCurrencyValue()
+                  _controller.deleteCurrencyValue()
                 : 
                   value == 'AC'
                 ?
-                  ConvertController.instance.cleanCurrencyValue()
+                  _controller.cleanCurrencyValue()
                 :
-                  ConvertController.instance.setCurrentCurrencyValue(value);
+                  _controller.setCurrentCurrencyValue(value);
               },
               style: TextButton.styleFrom(
                 backgroundColor: MyColors.backgroundBlackLigth,
