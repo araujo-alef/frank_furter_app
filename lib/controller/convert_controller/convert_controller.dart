@@ -17,29 +17,30 @@ class ConvertController extends ChangeNotifier {
   convertCurrency() async {
     String currentCurrencyForConverted = currentCurrency.replaceAll(',', '.');
     if(currentTypeCurrency == convertedTypeCurrency ) {
-      convertedCurrency = currentCurrency;convertedCurrency = currentCurrency;
+      convertedCurrency = currentCurrency;
     } else {
       ConvertedCurrencyModel response = await api.convertCurrency(currentCurrencyForConverted, currentTypeCurrency, convertedTypeCurrency);
-      convertedCurrency = response.convertedCurrencyValue.toString();
+      convertedCurrency = response.convertedCurrencyValue.toStringAsFixed(2).replaceAll('.', ',');
     }   
-
     notifyListeners();
   }
 
   setCurrentType(String newValue) {
     currentTypeCurrency = newValue;
+    convertCurrency();
     notifyListeners();
   }
 
   setConvertedType(String newValue) {
     convertedTypeCurrency = newValue;
+    convertCurrency();
     notifyListeners();
   }
 
   setListCurrencies() async {
     listCurrencies = await api.fetchListCurrencies();
     currentTypeCurrency = listCurrencies[0];
-    convertedTypeCurrency = listCurrencies[0];
+    convertedTypeCurrency = listCurrencies[1];
     notifyListeners();
   }
 
@@ -90,14 +91,19 @@ class ConvertController extends ChangeNotifier {
   deleteCurrencyValue() {
     if(currentCurrency == '') {
       return;
+    } else if (currentCurrency.length == 1) {
+      currentCurrency = '0';
+      convertedCurrency = '0';
     } else {
       currentCurrency = currentCurrency.substring(0, (currentCurrency.length - 1));
-      notifyListeners();
+      convertCurrency();
     }
+    notifyListeners();
   }
 
   cleanCurrencyValue() {
-      currentCurrency = '';
+      currentCurrency = '0';
+      convertedCurrency = '0';
       notifyListeners();
   }
 

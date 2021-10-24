@@ -3,7 +3,7 @@ class ConvertedCurrencyModel {
   final double amount;
   final String base;
   final String date;
-  final double convertedCurrencyValue;
+  final num convertedCurrencyValue;
   
 
   ConvertedCurrencyModel({

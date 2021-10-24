@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frank_furter/controller/home_controller/test_controller.dart';
-import 'package:frank_furter/repository/i_repository.dart';
-import 'package:frank_furter/repository/repository_impl.dart';
+import 'package:frank_furter/controller/convert_controller/convert_controller.dart';
 import 'package:frank_furter/utils/constants/colors.dart';
 
 

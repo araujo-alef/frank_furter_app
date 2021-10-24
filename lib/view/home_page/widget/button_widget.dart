@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frank_furter/controller/home_controller/test_controller.dart';
+import 'package:frank_furter/controller/convert_controller/convert_controller.dart';
 import 'package:frank_furter/utils/constants/colors.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class ButtonWidget extends StatelessWidget {
                 value == 'del' ?
                   ConvertController.instance.deleteCurrencyValue()
                 : 
-                  value == 'cc'
+                  value == 'AC'
                 ?
                   ConvertController.instance.cleanCurrencyValue()
                 :
@@ -39,7 +39,7 @@ class ButtonWidget extends StatelessWidget {
                       value,
                       style: TextStyle(
                         fontSize: MediaQuery.of(context).textScaleFactor * 38,
-                        color: value == 'cc'
+                        color: value == 'AC'
                             ? const Color(0XFFF63356)
                             : const Color(0XFF747474),
                       ),

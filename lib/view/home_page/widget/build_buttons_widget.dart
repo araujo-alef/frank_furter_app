@@ -14,7 +14,7 @@ class BuildButtons extends StatelessWidget {
         children: const [
           BuildButtonRow(first: '7', second: '8', third: '9', fourth: ''),
           BuildButtonRow(first: '4', second: '5', third: '6', fourth: ''),
-          BuildButtonRow(first: '1', second: '2', third: '3', fourth: 'cc'),
+          BuildButtonRow(first: '1', second: '2', third: '3', fourth: 'AC'),
           BuildButtonRow(first: '00', second: '0', third: '.', fourth: 'del'),
         ],
       ),
