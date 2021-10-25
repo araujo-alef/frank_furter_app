@@ -37,3 +37,5 @@ fetch(`https://${host}/latest?amount=10&from=GBP&to=USD`)
 
 
 <img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_page.jpg" alt="drawing" width="200"/>  <img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/list_currency.jpg" alt="drawing" width="200"/>   <img src="https://github.com/araujo-alef/frank_furter_app/blob/main/assets/screenshot/converted_performed.jpg" alt="drawing" width="200"/>
+
+Baixe o instalador do app em 'apk/app-release.apk'
