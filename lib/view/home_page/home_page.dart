@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frank_furter/controller/convert_controller/convert_controller.dart';
 import 'package:frank_furter/utils/constants/colors.dart';
 import 'package:frank_furter/view/home_page/widget/display_widget.dart';
+import 'package:frank_furter/view/home_page/widget/load_app.dart';
 
 import 'widget/build_buttons_widget.dart';
 
@@ -28,9 +29,7 @@ class _HomePageState extends State<HomePage> {
         animation: ConvertController.instance,
         builder: (context, snapshot) {
           return ConvertController.instance.listCurrencies.isEmpty ?
-            const Center(child: CircularProgressIndicator(
-              color: MyColors.secondTextColor,
-            ))
+            const LoadApp()
           :
             Column(
             children: const <Widget>[
