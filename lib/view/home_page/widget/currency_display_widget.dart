@@ -18,8 +18,11 @@ class CurrencyDisplayWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height / 100;
+    final width = MediaQuery.of(context).size.width / 100;
+
     return SizedBox(
       height: height * 15,
+      width: width * 85,
       child: Column(  
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[

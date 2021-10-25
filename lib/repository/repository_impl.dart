@@ -20,7 +20,6 @@ class RepositoyImpl extends IRepositoy {
   Future<ConvertedCurrencyModel> convertCurrency(String currentValue, String currentType, String convertedType) async {
     currentType = currentType.substring(0, 3);
     convertedType = convertedType.substring(0, 3);
-    print('$baseUrl/latest?amount=$currentValue&from=$currentType&to=$convertedType');
     final response = await dio.get('$baseUrl/latest?amount=$currentValue&from=$currentType&to=$convertedType');
     return ConvertedCurrencyModel.fromJson(response.data, convertedType);
   }

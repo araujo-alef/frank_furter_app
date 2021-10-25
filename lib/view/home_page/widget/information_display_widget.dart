@@ -26,7 +26,7 @@ class InformatioDisplay extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.normal,
             color: MyColors.informationTextColor,
-            fontSize: MediaQuery.of(context).textScaleFactor * 18,
+            fontSize: height * 2,
           )
         ),
       ),

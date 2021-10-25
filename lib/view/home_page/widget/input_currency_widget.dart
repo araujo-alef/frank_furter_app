@@ -30,7 +30,7 @@ class _InputCurrencyWidgetState extends State<InputCurrencyWidget> {
       child: Container(
         color: MyColors.backgroundBlackDark,
         alignment: Alignment.centerRight,
-        height: height * 8,
+        height: height * 7,
         width: width * 85,
         child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,

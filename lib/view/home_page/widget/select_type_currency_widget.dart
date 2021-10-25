@@ -18,9 +18,11 @@ class _SelectTypeCurrencyWidgetState extends State<SelectTypeCurrencyWidget> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width / 100;
+    final height = MediaQuery.of(context).size.height / 100;
     
     return SizedBox(
       width: width * 60,
+      height: height * 6,
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: widget.currenciesType,

@@ -10,10 +10,12 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _controller = ConvertController.instance;
+    final width = MediaQuery.of(context).size.width / 100;
+    final height = MediaQuery.of(context).size.height / 100;
 
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.25,
-      height: (MediaQuery.of(context).size.height * 0.5) / 4,
+      width: width * 25,
+      height: (height * 50) / 4,
       child: value == ''
           ? Container()
           : ElevatedButton(
@@ -40,7 +42,7 @@ class ButtonWidget extends StatelessWidget {
                   : Text(
                       value,
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).textScaleFactor * 38,
+                        fontSize: height * 4,
                         color: value == 'AC'
                             ? const Color(0XFFF63356)
                             : const Color(0XFF747474),
