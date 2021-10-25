@@ -34,10 +34,11 @@ class LoadApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
+              Container(
+                alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(horizontal: width * 5),
                 child: Text(
-                  'Certifique-se de que está conectado a internetpara',
+                  'Certifique-se de que está conectado a internet para',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
                       fontSize: height * 1.6, color: MyColors.primaryTextColor),
